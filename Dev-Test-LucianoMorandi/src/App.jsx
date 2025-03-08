@@ -61,9 +61,15 @@ function App() {
     setEventInfo(null)
     setBuyForm(null)
 
+    let ticket = {
+      name: document.getElementById('name').value,
+      quantity: document.getElementById('quantity').value,
+      total: document.getElementById('total').value
+    }
+
     fetch('https://goldfish-app-fbulw.ondigitalocean.app/tickets', {
       method: 'POST',
-      body: JSON.stringify(),
+      body: JSON.stringify(ticket),
       headers: {'Content-type': 'application/json; charset=UTF=8'}
     })
      .then(res => res.json())
