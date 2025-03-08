@@ -10,6 +10,7 @@ function App() {
   const [eventInfo, setEventInfo] = useState(null)
   const [buyButtonSate, setBuyButtonSate] = useState(null)
   const [buyForm, setBuyForm] = useState(null)
+  const [buyTicket, setBuyTicket] = useState()
 
   useEffect(() => {
     fetch(API_URL_EVENTS)
@@ -47,18 +48,31 @@ function App() {
 
   }
 
-  function calc() {
-    var amount = document.getElementById('quantity').value
-    var amount = parseInt(amount, 10)
-    var price = document.getElementById('price').value
-    var price = parseInt(price, 10)
-    var total = amount * price
-    document.getElementById('total').value = total
-  }
+  // function calc() {
+  //   var amount = document.getElementById('quantity').value
+  //   var amount = parseInt(amount, 10)
+  //   var price = document.getElementById('price').value
+  //   var price = parseInt(price, 10)
+  //   var total = amount * price
+  //   document.getElementById('total').value = total
+  // }
 
   const CompleteBuyButton = () => {
     setEventInfo(null)
     setBuyForm(null)
+
+    fetch('https://goldfish-app-fbulw.ondigitalocean.app/tickets', {
+      method: 'POST',
+      body: JSON.stringify(),
+      headers: {'Content-type': 'application/json; charset=UTF=8'}
+    })
+     .then(res => res.json())
+     .then(response => {
+      if(!response.ok) {
+        return alert('Error: purchase failure')
+      }
+      return alert('Purchase made succefly')
+     })     
   }
 
   const cancelButton = () => {
