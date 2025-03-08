@@ -8,7 +8,7 @@
 li {
   list-style-type: none;
 }
- .event-container {
+ .event-card {
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(4, 1fr);
@@ -18,11 +18,18 @@ li {
 .event {
       border-radius: 10px;
       width: 80%;
-      background-color: gray;
+      background-color: grey;
      &:hover {
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
           img {
               transform: scale(1.1);
           }
       }        
-  }
+}
+.event-details {
+  display: grid;
+  justify-items: center;
+  gap: 50px;
+  margin: 20px  50px;
+  background-color: grey;
+}
