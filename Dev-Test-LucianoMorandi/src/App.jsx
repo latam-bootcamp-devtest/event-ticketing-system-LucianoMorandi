@@ -1,26 +1,16 @@
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
+import { useEventList } from './hooks/useEventList'
 
-const API_URL_EVENTS = 'https://goldfish-app-fbulw.ondigitalocean.app/Event?applicationId=b775ecad-498e-4281-9885-a2539d308c86'
 
 function App() {
-  const [events, setEvents] = useState([])
+  const {events} = useEventList([])
   const [selectedEvent, SetSelectedEvent] = useState()
   const [eventInfo, setEventInfo] = useState(null)
   const [buyButtonSate, setBuyButtonSate] = useState(null)
   const [buyForm, setBuyForm] = useState(null)
-  const [buyTicket, setBuyTicket] = useState()
 
-  useEffect(() => {
-    fetch(API_URL_EVENTS)
-      .then(res => res.json())
-      .then(data => {
-        if (!data) return alert('No Events Available :(')
-        setEvents(data)
-      })
-
-  }, [])
 
   const getInfoEvent = () => {
     setEventInfo(true)
