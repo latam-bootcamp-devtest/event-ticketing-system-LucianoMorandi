@@ -14,13 +14,13 @@ li {
  .event-card {
   display: grid;
   justify-items: center;
+
   grid-template-columns: repeat(4, 1fr);
   gap: 50px;
   margin: 20px  50px;
  }
 .event {
       border-radius: 10px;
-      width: 80%;
       background-color: grey;
      &:hover {
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);

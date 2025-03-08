@@ -28,7 +28,6 @@ function App() {
   const eventClick = (id) => {
     getInfoEvent()
     setBuyButtonSate(true)
-
     fetch(`https://goldfish-app-fbulw.ondigitalocean.app/Event/${id}?applicationId=b775ecad-498e-4281-9885-a2539d308c86`)
       .then(res => res.json())
       .then(data => {
@@ -46,6 +45,15 @@ function App() {
     setBuyButtonSate(null)
     setBuyForm(true)
 
+  }
+
+  function calc() {
+    var amount = document.getElementById('quantity').value
+    var amount = parseInt(amount, 10)
+    var price = document.getElementById('price').value
+    var price = parseInt(price, 10)
+    var total = amount * price
+    document.getElementById('total').value = total
   }
 
   const CompleteBuyButton = () => {
@@ -66,7 +74,7 @@ function App() {
       <div >
         <ul className='event-card' >{events.map(item => (
           <li className='event' key={item.id}>Nombre del evento:{item.name}
-            Fecha del evento: {item.date}
+            Fecha del evento: {item.date.slice('',10)}
             Precio: {item.price}
             Available seats: 5
             <button onClick={() => {eventClick(item.id)} }>Event details</button></li>
@@ -79,10 +87,10 @@ function App() {
               <button onClick={backClick}>back</button>
               <h2>Event Details</h2>
               <p>Event: {selectedEvent?.name}</p>
-              <p>Date: {selectedEvent?.date}</p>
+              <p>Date: {selectedEvent?.date.slice('',10)}</p>
               <p>Location: this is the event location</p>
               <strong>This is the event description</strong>
-              <p>Ticket price: {selectedEvent?.price}</p>
+              <p id='price' onInput='calc();'>Ticket price: {selectedEvent?.price}</p>
               <p>Available seats: 5</p>
               {buyButtonSate && <button onClick={buyButton}>Book Ticket</button>}
             </div>
@@ -91,10 +99,11 @@ function App() {
             <form action="">
               <label for='name'>Customer Name</label>
               <input type="text" id='name' />
-              <label for='quantity'>Tickets to Book</label>
-              <input type="number" id='quantity' />
-              <p>Total Price: $</p>
-              <button onClick={CompleteBuyButton}>Book now</button>
+              <br/><label for='quantity' onInput='calc();'>Tickets to Book</label>
+              <input type="number" id='quantity' min='1' max='10'/>
+              <br/><label htmlFor="">Total Price</label>
+              <input type="number" disabled id='total'/>
+              <br/><button onClick={CompleteBuyButton}>Book now</button>
               <button onClick={cancelButton}>Cancel</button>
             </form>
           }
