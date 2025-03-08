@@ -8,27 +8,21 @@
 li {
   list-style-type: none;
 }
-/* .event-container {
+ .event-container {
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin: 20px  0;
-
-  .event {
+  gap: 50px;
+  margin: 20px  50px;
+ }
+.event {
       border-radius: 10px;
       width: 80%;
-
-      &:hover {
+      background-color: gray;
+     &:hover {
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
           img {
               transform: scale(1.1);
           }
-      }
-      
-     
-    
-          
-      
+      }        
   }
-} */

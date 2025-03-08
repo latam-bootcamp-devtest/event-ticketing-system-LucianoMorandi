@@ -19,8 +19,8 @@ function App() {
   return (
     <>
       <h1>Dev Test</h1>
-      <div className='event-container'>
-      <ul>{event.map(item => (
+      <div >
+      <ul className='event-container' >{event.map(item => (
         <li className='event' key={item.id}>Nombre del evento:{item.name}
          Fecha del evento: {item.date}
          Precio: {item.price}</li>
